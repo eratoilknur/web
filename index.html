@@ -452,18 +452,109 @@
         }
 
       
+        @media (max-width: 1024px) {
+            .container {
+                padding: 0 10px;
+            }
+            .skills-grid, .bands-grid, .gallery-grid, .contact-content {
+                gap: 15px;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+        }
         @media (max-width: 768px) {
+            header {
+                padding: 10px 0;
+            }
             .nav-links {
                 display: none;
+                position: absolute;
+                top: 60px;
+                right: 20px;
+                background: rgba(26, 26, 46, 0.98);
+                flex-direction: column;
+                width: 180px;
+                border-radius: 10px;
+                box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+                z-index: 2000;
+                gap: 0;
             }
-
+            .nav-links.open {
+                display: flex;
+            }
+            .nav-links li {
+                margin: 0;
+                border-bottom: 1px solid rgba(255,255,255,0.08);
+            }
+            .nav-links a {
+                padding: 15px 20px;
+                border-radius: 0;
+                display: block;
+            }
+            .hamburger {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                width: 36px;
+                height: 36px;
+                cursor: pointer;
+                z-index: 2100;
+            }
+            .hamburger span {
+                height: 4px;
+                width: 100%;
+                background: #e53935;
+                margin: 4px 0;
+                border-radius: 2px;
+                transition: all 0.3s;
+            }
             .hero-content h1 {
-                font-size: 2.5rem;
+                font-size: 2.2rem;
             }
-
             .about-image {
-                height: 220px;
+                height: 180px;
                 border-radius: 10px 10px 0 0;
+            }
+            .skills-grid, .bands-grid, .gallery-grid, .contact-content {
+                grid-template-columns: 1fr;
+            }
+            .gallery-item {
+                height: 140px;
+                font-size: 1.2rem;
+            }
+            .skill-card, .band-card, .contact-info, .contact-form {
+                padding: 18px;
+            }
+            .form-group input, .form-group textarea {
+                font-size: 0.95rem;
+            }
+            .submit-btn {
+                font-size: 0.95rem;
+                padding: 10px 0;
+            }
+            .social-links a {
+                width: 38px;
+                height: 38px;
+                font-size: 1rem;
+            }
+        }
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 1.3rem;
+            }
+            .section-title {
+                font-size: 1.2rem;
+            }
+            .about-image {
+                height: 110px;
+            }
+            .gallery-item {
+                height: 80px;
+                font-size: 0.9rem;
+            }
+            .container {
+                padding: 0 4px;
             }
         }
     </style>
@@ -472,6 +563,11 @@
     <header>
         <nav class="container">
             <a href="#" class="logo">🎸 Chie</a>
+            <div class="hamburger" id="hamburger-menu" tabindex="0" aria-label="Menüyü Aç/Kapat" role="button">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
             <ul class="nav-links">
                 <li><a href="#home">Ana Sayfa</a></li>
                 <li><a href="#about">Hakkımda</a></li>
@@ -731,6 +827,23 @@
                 setTimeout(() => {
                     this.style.transform = 'scale(1)';
                 }, 200);
+            });
+        });
+"
+        const hamburger = document.getElementById('hamburger-menu');
+        const navLinks = document.querySelector('.nav-links');
+        hamburger.addEventListener('click', function() {
+            navLinks.classList.toggle('open');
+        });
+        hamburger.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                navLinks.classList.toggle('open');
+            }
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function() {
+                navLinks.classList.remove('open');
             });
         });
     </script>
