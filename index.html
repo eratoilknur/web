@@ -830,7 +830,6 @@
             });
         });
 
-        // Hamburger menu toggle
         const hamburger = document.getElementById('hamburger-menu');
         const navLinks = document.querySelector('.nav-links');
         hamburger.addEventListener('click', function() {
@@ -841,7 +840,6 @@
                 navLinks.classList.toggle('open');
             }
         });
-        // Kapanınca menüyü kapat
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', function() {
                 navLinks.classList.remove('open');
