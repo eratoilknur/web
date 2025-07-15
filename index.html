@@ -518,6 +518,7 @@
             }
             .skills-grid, .bands-grid, .gallery-grid, .contact-content {
                 grid-template-columns: 1fr;
+                gap: 15px;
             }
             .gallery-item {
                 height: 140px;
@@ -830,6 +831,7 @@
             });
         });
 
+        // Hamburger menu toggle
         const hamburger = document.getElementById('hamburger-menu');
         const navLinks = document.querySelector('.nav-links');
         hamburger.addEventListener('click', function() {
@@ -840,6 +842,7 @@
                 navLinks.classList.toggle('open');
             }
         });
+        // Kapanınca menüyü kapat
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', function() {
                 navLinks.classList.remove('open');
